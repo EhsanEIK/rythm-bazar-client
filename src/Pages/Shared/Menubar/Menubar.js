@@ -1,6 +1,7 @@
 import { Button, Navbar } from 'flowbite-react';
-import { NavbarBrand } from 'flowbite-react/lib/esm/components/Navbar/NavbarBrand';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../../assets/logo/logo.jpg';
 
 const Menubar = () => {
     return (
@@ -10,39 +11,22 @@ const Menubar = () => {
         >
             <Navbar.Brand href="https://flowbite.com/">
                 <img
-                    src="https://flowbite.com/docs/images/logo.svg"
+                    src={logo}
                     className="mr-3 h-6 sm:h-9"
-                    alt="Flowbite Logo"
+                    alt="rythm bazar Logo"
                 />
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                    Flowbite
+                <span className="self-center whitespace-nowrap text-3xl font-semibold text-purple-700 dark:text-white">
+                    Rythm Bazar
                 </span>
             </Navbar.Brand>
             <div className="flex md:order-2">
                 <Button>
-                    Get started
+                    Login
                 </Button>
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <Navbar.Link
-                    href="/navbars"
-                    active={true}
-                >
-                    Home
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    About
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Services
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Pricing
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Contact
-                </Navbar.Link>
+                <Link to='/home'>Home</Link>
             </Navbar.Collapse>
         </Navbar>
     );
