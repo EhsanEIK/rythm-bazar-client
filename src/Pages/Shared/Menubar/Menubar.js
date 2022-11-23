@@ -1,7 +1,8 @@
-import { Button } from 'flowbite-react';
+import { Button, Navbar } from 'flowbite-react';
+import { NavbarBrand } from 'flowbite-react/lib/esm/components/Navbar/NavbarBrand';
 import React from 'react';
 
-const Navbar = () => {
+const Menubar = () => {
     return (
         <Navbar
             fluid={true}
@@ -47,4 +48,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Menubar;
