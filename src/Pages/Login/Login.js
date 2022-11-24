@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { login } = useContext(AuthContext);
+
     const { register, handleSubmit, formState: { errors }, } = useForm();
+
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     //  handle login for sign in a user in the website
     const handleLogin = data => {
-        console.log(data)
+        setErrorMsg('');
+
+        const email = data.email;
+        const password = data.password;
+
+        login(email, password)
+            .then(result => {
+                toast.success("Login Successfull");
+                navigate(from, { replace: true });
+            })
+            .catch(err => setErrorMsg(err.message))
     }
 
     return (
@@ -15,7 +35,7 @@ const Login = () => {
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-50 text-gray-800">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login Now!</h2>
                 <p className="text-sm text-center text-gray-600">Don't have an account?
-                    <Link to='/register' className="focus:underline hover:underline">Register here</Link>
+                    <Link to='/register' className="focus:underline hover:underline ml-2">Register here</Link>
                 </p>
                 <div className="my-6 space-y-4">
                     <button className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-emerald-600 bg-yellow-400 border-yellow-500 text-white hover:bg-yellow-500">
@@ -61,6 +81,9 @@ const Login = () => {
                         </div>
                     </div>
                     <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-emerald-600 text-gray-50 hover:bg-emerald-700">Log in</button>
+                    {
+                        errorMsg && <p className='text-red-600 text-md text-center my-2'>{errorMsg}</p>
+                    }
                 </form>
             </div>
         </div>

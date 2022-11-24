@@ -15,6 +15,8 @@ const Register = () => {
 
     // register button to create a new user
     const handleRegister = data => {
+        setErrorMsg('');
+
         const email = data.email;
         const password = data.password;
         const name = data.userName;
