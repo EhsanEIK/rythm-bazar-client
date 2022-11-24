@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useUserInfo from '../../../hooks/useUserInfo';
 
 const AddProducts = () => {
+    const { user } = useContext(AuthContext);
+    const [userInfo] = useUserInfo(user?.email);
+
     const { register, handleSubmit, formState: { errors }, } = useForm();
 
     const handleAddProduct = data => {
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
 
+        fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_ImgBB_API_Key}`, {
+            method: "POST",
+            body: formData,
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    const imageURL = data.data.url;
+                }
+            })
+        // const product = {
+        //     productName: data.productName,
+        //     resalePrice: data.resalePrice,
+        //     origianlPrice: data.originalPrice,
+        //     yearsOfUse:data.yearsOfUse,
+        // }
     }
 
     return (
