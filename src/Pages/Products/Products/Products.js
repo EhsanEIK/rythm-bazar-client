@@ -25,7 +25,8 @@ const Products = () => {
             {
                 productDetails && <BookingModal
                     productDetails={productDetails}
-                    closeBookingModal={closeBookingModal}></BookingModal>
+                    closeBookingModal={closeBookingModal}
+                    setProductDetalis={setProductDetalis}></BookingModal>
             }
         </div>
     );
