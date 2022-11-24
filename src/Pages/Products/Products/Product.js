@@ -38,7 +38,8 @@ const Product = ({ product }) => {
                     <p className='text-lg'><b>Used (in year):</b> {yearsOfUse}</p>
                     <p className='text-lg'><b>Phone:</b> {phoneNumber}</p>
                     {
-                        userInfo.verified ? <button className='btn bg-teal-700 w-full mt-5'>Book Now</button>
+                        userInfo.verified ?
+                            <label htmlFor="my-modal" className='btn bg-teal-700 w-full mt-5'>Book Now</label>
                             : <span className='text-red-600 text-center'>User is not verified yet</span>
                     }
                 </div>
