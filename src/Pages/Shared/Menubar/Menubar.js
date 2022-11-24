@@ -20,9 +20,11 @@ const Menubar = () => {
                 </Link>
             </Navbar.Brand>
             <div className="flex md:order-2">
-                <Button>
-                    Login
-                </Button>
+                <Link to='/login'>
+                    <Button>
+                        Login
+                    </Button>
+                </Link>
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>

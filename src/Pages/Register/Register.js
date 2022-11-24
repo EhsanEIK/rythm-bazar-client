@@ -45,7 +45,6 @@ const Register = () => {
                     })
             })
             .catch(err => setErrorMsg(err.message))
-        console.log(data)
     }
 
     return (
@@ -85,12 +84,12 @@ const Register = () => {
                         <div className='flex justify-evenly'>
                             <div>
                                 <input type="radio" id="buyer"
-                                    {...register("userRole")} value="Buyer" checked />
+                                    {...register("userRole")} value="buyer" checked />
                                 <label htmlFor="buyer" className='ml-2'>Buyer</label>
                             </div>
                             <div>
                                 <input type="radio" id="seller"
-                                    {...register("userRole")} value="Seller" />
+                                    {...register("userRole")} value="seller" />
                                 <label htmlFor="seller" className='ml-2'>Seller</label>
                             </div>
                         </div>
@@ -101,7 +100,7 @@ const Register = () => {
                     }
                 </form>
                 <p className="text-xs text-center sm:px-6 text-gray-600">Already have an account?
-                    <Link to='/' className="underline text-gray-800 ml-2">Log in</Link>
+                    <Link to='/login' className="underline text-gray-800 ml-2">Log in</Link>
                 </p>
             </div >
         </div >
