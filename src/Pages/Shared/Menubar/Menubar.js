@@ -1,9 +1,12 @@
 import { Button, Navbar } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.jpg';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Menubar = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <Navbar
             fluid={true}
@@ -20,6 +23,9 @@ const Menubar = () => {
                 </Link>
             </Navbar.Brand>
             <div className="flex md:order-2">
+                {
+                    user && <span className='text-sm bg-slate-100 rounded-lg px-2 mr-3'>{user?.email}</span>
+                }
                 <Link to='/login'>
                     <Button>
                         Login
