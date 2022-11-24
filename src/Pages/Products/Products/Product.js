@@ -2,7 +2,7 @@ import React from 'react';
 import useUserInfo from '../../../hooks/useUserInfo';
 import { FaCheckCircle } from "react-icons/fa";
 
-const Product = ({ product }) => {
+const Product = ({ product, setProductDetalis }) => {
     const { _id, image, sellerName, email, productName, resalePrice, origianlPrice, yearsOfUse, date, location, phoneNumber, condition } = product;
 
     const [userInfo] = useUserInfo(email);
@@ -39,7 +39,7 @@ const Product = ({ product }) => {
                     <p className='text-lg'><b>Phone:</b> {phoneNumber}</p>
                     {
                         userInfo.verified ?
-                            <label htmlFor="my-modal" className='btn bg-teal-700 w-full mt-5'>Book Now</label>
+                            <label onClick={() => setProductDetalis(product)} htmlFor="booking-modal" className='btn bg-teal-700 w-full mt-5'>Book Now</label>
                             : <span className='text-red-600 text-center'>User is not verified yet</span>
                     }
                 </div>
