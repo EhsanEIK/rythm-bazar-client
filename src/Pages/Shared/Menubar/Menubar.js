@@ -4,9 +4,11 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.jpg';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useUserInfo from '../../../hooks/useUserInfo';
 
 const Menubar = () => {
     const { user, logout } = useContext(AuthContext);
+    const { userInfo } = useUserInfo(user?.email);
 
     // handle log out for logging out a user from the website
     const handleLogout = () => {
@@ -48,8 +50,16 @@ const Menubar = () => {
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
+                <Link to='/admin'>Admin</Link>
                 <Link to='/home'>Home</Link>
                 <Link to='/addProduct'>Add Product</Link>
+                <Link to='/myBuyers'>My Buyers</Link>
+                <Link to='/myProducts'>My Products</Link>
+                <Link to='/myOrders'>My Orders</Link>
+                <Link to='/myWishlist'>My Wishlist</Link>
+                <Link to='/admin/allSellers'>All Sellers</Link>
+                <Link to='/admin/allBuyers'>All Buyers</Link>
+                <Link to='/admin/reportedItems'>Reported Items</Link>
             </Navbar.Collapse>
         </Navbar>
     );
