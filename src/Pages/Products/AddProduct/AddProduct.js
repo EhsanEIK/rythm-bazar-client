@@ -20,6 +20,7 @@ const AddProducts = () => {
         }
     })
 
+    // handle add product to the database
     const handleAddProduct = (data, event) => {
         const image = data.image[0];
         const formData = new FormData();
@@ -42,6 +43,7 @@ const AddProducts = () => {
                         resalePrice: data.resalePrice,
                         origianlPrice: data.originalPrice,
                         yearsOfUse: data.yearsOfUse,
+                        location: data.location,
                         category: data.category,
                         image: imageURL,
                         date: date + ''
@@ -122,6 +124,15 @@ const AddProducts = () => {
                             }
                             {errors.category && <p role="alert" className='text-red-600 mt-1'>{errors.category?.message}</p>}
                         </select>
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Location</span></label>
+                        <input type="text"
+                            {...register("location", {
+                                required: "Location is required"
+                            })}
+                            className="input input-bordered w-full" />
+                        {errors.location && <p role="alert" className='text-red-600 mt-1'>{errors.location?.message}</p>}
                     </div>
                     <div className="form-control w-full mt-5">
                         <input type="file"
