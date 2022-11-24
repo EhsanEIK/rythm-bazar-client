@@ -6,7 +6,7 @@ const Products = () => {
     const products = useLoaderData([]);
 
     return (
-        <div>
+        <div className='my-10'>
             <h1 className='text-5xl text-center font-semibold mb-14'>All Products {products.length}</h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 {
