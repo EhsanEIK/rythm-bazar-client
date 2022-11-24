@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
 const AdminLayout = () => {
+    const { user } = useContext(AuthContext);
 
     return (
         <div>
@@ -64,12 +66,11 @@ const AdminLayout = () => {
                             </div>
                         </div>
                         <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
-                            <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-lg bg-gray-500" />
+                            <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-lg bg-gray-500" />
                             <div>
-                                <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
-                                <span className="flex items-center space-x-1">
-                                    <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">View profile</a>
-                                </span>
+                                <h2 className="text-md font-semibold">
+                                    {user?.displayName || user?.email}
+                                </h2>
                             </div>
                         </div>
                     </div>

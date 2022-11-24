@@ -1,12 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllSellers = () => {
-    const { data: allSellers = [] } = useQuery({
+    const { data: allSellers = [], refetch } = useQuery({
         queryKey: ['/users/sellers'],
         queryFn: () => fetch('http://localhost:5000/users/sellers')
             .then(res => res.json())
     })
+
+    // handle seller verification
+    const handleSellerVerification = seller => {
+        const id = seller._id;
+        fetch(`http://localhost:5000/users/sellers/${id}`, {
+            method: "PUT",
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success(`${seller.name} is verified now`);
+                    refetch();
+                }
+            })
+    }
 
     return (
         <div>
@@ -32,8 +48,8 @@ const AllSellers = () => {
                                     <td>
                                         {
                                             seller?.verified ?
-                                                <span>Verified</span>
-                                                : <button className='btn btn-sm bg-green-700 border-green-700 hover:bg-green-800'>Verified Now</button>
+                                                <span className='text-green-500 font-semibold'>Verified</span>
+                                                : <button onClick={() => handleSellerVerification(seller)} className='btn btn-sm bg-green-700 border-green-700 hover:bg-green-800'>Verified Now</button>
                                         }
                                     </td>
                                     <td>
