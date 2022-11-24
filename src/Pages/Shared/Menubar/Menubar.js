@@ -49,6 +49,7 @@ const Menubar = () => {
             </div>
             <Navbar.Collapse>
                 <Link to='/home'>Home</Link>
+                <Link to='/addProduct'>Add Product</Link>
             </Navbar.Collapse>
         </Navbar>
     );
