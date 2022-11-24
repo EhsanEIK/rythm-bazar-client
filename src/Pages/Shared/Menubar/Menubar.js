@@ -15,9 +15,9 @@ const Menubar = () => {
                     className="mr-3 h-6 sm:h-9"
                     alt="rythm bazar Logo"
                 />
-                <span className="self-center whitespace-nowrap text-3xl font-semibold text-purple-700 dark:text-white">
+                <Link to="/" className="self-center whitespace-nowrap text-3xl font-semibold text-purple-700 dark:text-white">
                     Rythm Bazar
-                </span>
+                </Link>
             </Navbar.Brand>
             <div className="flex md:order-2">
                 <Button>
