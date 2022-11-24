@@ -1,7 +1,11 @@
 import React from 'react';
+import useUserInfo from '../../../hooks/useUserInfo';
+import { FaCheckCircle } from "react-icons/fa";
 
 const Product = ({ product }) => {
-    const { _id, image, sellerName, productName, resalePrice, origianlPrice, yearsOfUse, date, location } = product;
+    const { _id, image, sellerName, email, productName, resalePrice, origianlPrice, yearsOfUse, date, location } = product;
+
+    const [userInfo] = useUserInfo(email);
 
     return (
         <div>
@@ -14,7 +18,12 @@ const Product = ({ product }) => {
                             <span className="inline-block text-xs leading-none text-gray-600 mt-2"><b>Post Time:</b> {date}</span>
                         </div>
                     </div>
-                    <button type="button" title="Bookmark post" className="flex items-center justify-center">
+                    {
+                        userInfo.verified && <FaCheckCircle
+                            className='text-blue-500 text-3xl'
+                            title='Verified User' />
+                    }
+                    <button type="button" title="Bookmark post" className="flex items-center justify-center ml-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
                             <path d="M424,496H388.75L256.008,381.19,123.467,496H88V16H424ZM120,48V456.667l135.992-117.8L392,456.5V48Z"></path>
                         </svg>
