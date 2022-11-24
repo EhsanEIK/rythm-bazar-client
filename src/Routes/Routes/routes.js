@@ -4,6 +4,7 @@ import Main from "../../layouts/Main";
 import Admin from "../../Pages/Admin/Admin/Admin";
 import AllBuyers from "../../Pages/Admin/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Admin/AllSellers/AllSellers";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import AddProduct from "../../Pages/Products/AddProduct/AddProduct";
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -37,15 +39,18 @@ const router = createBrowserRouter([
     },
     {
         path: '/register',
-        element: <Register></Register>
+        element: <Register></Register>,
+        errorElement: <ErrorPage></ErrorPage>
     },
     {
         path: '/login',
-        element: <Login></Login>
+        element: <Login></Login>,
+        errorElement: <ErrorPage></ErrorPage>
     },
     {
         path: '/admin',
         element: <AdminLayout></AdminLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/admin',
