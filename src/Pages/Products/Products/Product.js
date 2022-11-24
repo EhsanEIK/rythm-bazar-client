@@ -35,6 +35,10 @@ const Product = ({ product }) => {
                     <p className='text-lg'><b>Resale Price:</b> ${resalePrice}</p>
                     <p className='text-lg'><b>Origianl Price:</b> ${origianlPrice}</p>
                     <p className='text-lg'><b>Used (in year):</b> {yearsOfUse}</p>
+                    {
+                        userInfo.verified ? <button className='btn bg-teal-700 w-full mt-5'>Book Now</button>
+                            : <span className='text-red-600 text-center'>User is not verified yet</span>
+                    }
                 </div>
             </div>
         </div>
