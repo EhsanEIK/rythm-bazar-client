@@ -38,17 +38,17 @@ const AdminLayout = () => {
                                     </li>
                                     <li className="rounded-sm">
                                         <Link to='/admin/allSellers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                            All Sellers
+                                            <span>All Sellers</span>
                                         </Link>
                                     </li>
                                     <li className="rounded-sm">
                                         <Link to='/admin/allBuyers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                            All Buyers
+                                            <span>All Buyers</span>
                                         </Link>
                                     </li>
                                     <li className="rounded-sm bg-gray-100 text-gray-900">
                                         <Link rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                            Reported Items
+                                            <span>Reported Items</span>
                                         </Link>
                                     </li>
                                     <li className="rounded-sm">

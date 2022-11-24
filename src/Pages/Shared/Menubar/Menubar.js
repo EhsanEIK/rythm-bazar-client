@@ -57,9 +57,6 @@ const Menubar = () => {
                 <Link to='/myProducts'>My Products</Link>
                 <Link to='/myOrders'>My Orders</Link>
                 <Link to='/myWishlist'>My Wishlist</Link>
-                <Link to='/admin/allSellers'>All Sellers</Link>
-                <Link to='/admin/allBuyers'>All Buyers</Link>
-                <Link to='/admin/reportedItems'>Reported Items</Link>
             </Navbar.Collapse>
         </Navbar>
     );
