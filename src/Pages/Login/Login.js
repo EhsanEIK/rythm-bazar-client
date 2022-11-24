@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -5,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, socialMediaLogin } = useContext(AuthContext);
 
     const { register, handleSubmit, formState: { errors }, } = useForm();
 
@@ -14,6 +15,8 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+
+    const goolgeAuthProvider = new GoogleAuthProvider();
 
     //  handle login for sign in a user in the website
     const handleLogin = data => {
@@ -30,6 +33,35 @@ const Login = () => {
             .catch(err => setErrorMsg(err.message))
     }
 
+    // handle google login
+    const handleGoogleLogin = () => {
+        socialMediaLogin(goolgeAuthProvider)
+            .then(result => {
+                const userInfo = result.user;
+                const user = {
+                    name: userInfo?.displayName,
+                    email: userInfo?.email,
+                    userRole: 'buyer',
+                }
+                // saved the user info into the database
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            toast.success("Login Successfull");
+                            navigate(from, { replace: true });
+                        }
+                    })
+            })
+            .catch(err => setErrorMsg(err.message))
+    }
+
     return (
         <div className='flex justify-center'>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-50 text-gray-800">
@@ -38,7 +70,7 @@ const Login = () => {
                     <Link to='/register' className="focus:underline hover:underline ml-2">Register here</Link>
                 </p>
                 <div className="my-6 space-y-4">
-                    <button className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-emerald-600 bg-yellow-400 border-yellow-500 text-white hover:bg-yellow-500">
+                    <button onClick={handleGoogleLogin} className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-emerald-600 bg-yellow-400 border-yellow-500 text-white hover:bg-yellow-500">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
                             <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
                         </svg>
