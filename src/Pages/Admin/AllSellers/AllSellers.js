@@ -24,6 +24,21 @@ const AllSellers = () => {
             })
     }
 
+    // handle delete seller from db
+    const handleDeleteSeller = seller => {
+        const id = seller._id;
+        fetch(`http://localhost:5000/users/sellers/${id}`, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success(`${seller.name} is deleted successfully`);
+                    refetch();
+                }
+            })
+    }
+
     return (
         <div>
             <h1 className='text-2xl font-semibold mb-14'>Total Sellers:  {allSellers.length}</h1>
@@ -53,7 +68,7 @@ const AllSellers = () => {
                                         }
                                     </td>
                                     <td>
-                                        <button className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
+                                        <button onClick={() => handleDeleteSeller(seller)} className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
                                     </td>
                                 </tr>)
                         }
