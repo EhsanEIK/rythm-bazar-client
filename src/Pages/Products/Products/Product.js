@@ -3,7 +3,7 @@ import useUserInfo from '../../../hooks/useUserInfo';
 import { FaCheckCircle } from "react-icons/fa";
 
 const Product = ({ product }) => {
-    const { _id, image, sellerName, email, productName, resalePrice, origianlPrice, yearsOfUse, date, location } = product;
+    const { _id, image, sellerName, email, productName, resalePrice, origianlPrice, yearsOfUse, date, location, phoneNumber, condition } = product;
 
     const [userInfo] = useUserInfo(email);
 
@@ -32,9 +32,11 @@ const Product = ({ product }) => {
                 <img src={image} alt="" className="object-cover object-center w-full h-72 bg-gray-500" />
                 <div className="p-3">
                     <p className='text-lg'><b>Product Name:</b> {productName}</p>
+                    <p className='text-lg'><b>Condition:</b> {condition}</p>
                     <p className='text-lg'><b>Resale Price:</b> ${resalePrice}</p>
                     <p className='text-lg'><b>Origianl Price:</b> ${origianlPrice}</p>
                     <p className='text-lg'><b>Used (in year):</b> {yearsOfUse}</p>
+                    <p className='text-lg'><b>Phone:</b> {phoneNumber}</p>
                     {
                         userInfo.verified ? <button className='btn bg-teal-700 w-full mt-5'>Book Now</button>
                             : <span className='text-red-600 text-center'>User is not verified yet</span>

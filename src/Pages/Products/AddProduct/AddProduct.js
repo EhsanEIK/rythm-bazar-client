@@ -43,7 +43,10 @@ const AddProducts = () => {
                         resalePrice: data.resalePrice,
                         origianlPrice: data.originalPrice,
                         yearsOfUse: data.yearsOfUse,
+                        description: data.description,
                         location: data.location,
+                        phoneNumber: data.phoneNumber,
+                        condition: data.condition,
                         category: data.category,
                         image: imageURL,
                         date: date + ''
@@ -111,6 +114,25 @@ const AddProducts = () => {
                         {errors.yearsOfUse && <p role="alert" className='text-red-600 mt-1'>{errors.yearsOfUse?.message}</p>}
                     </div>
                     <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Product Description</span></label>
+                        <textarea
+                            {...register("description")}
+                            className="textarea textarea-bordered"></textarea>
+                        {errors.description && <p role="alert" className='text-red-600 mt-1'>{errors.description?.message}</p>}
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Select Product Condition</span></label>
+                        <select {...register("condition", {
+                            required: "Please select product condition"
+                        })} className="select select-bordered w-full">
+                            <option>--- SELECT ---</option>
+                            <option value="Excellent">Excellent</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                            {errors.condition && <p role="alert" className='text-red-600 mt-1'>{errors.condition?.message}</p>}
+                        </select>
+                    </div>
+                    <div className="form-control w-full">
                         <label className="label"><span className="label-text">Select Category</span></label>
                         <select {...register("category", {
                             required: "Please select a category"
@@ -124,6 +146,15 @@ const AddProducts = () => {
                             }
                             {errors.category && <p role="alert" className='text-red-600 mt-1'>{errors.category?.message}</p>}
                         </select>
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Phone Number</span></label>
+                        <input type="text"
+                            {...register("phoneNumber", {
+                                required: "Phone Number is required",
+                            })}
+                            className="input input-bordered w-full" />
+                        {errors.phoneNumber && <p role="alert" className='text-red-600 mt-1'>{errors.phoneNumber?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label"><span className="label-text">Location</span></label>
