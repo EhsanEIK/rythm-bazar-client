@@ -13,15 +13,36 @@ const Register = () => {
 
     const navigate = useNavigate();
 
+    // register button to create a new user
     const handleRegister = data => {
         const email = data.email;
         const password = data.password;
         const name = data.userName;
         const userRole = data.userRole;
+
+        const user = {
+            name,
+            email,
+            userRole,
+        }
+
         signUp(email, password)
             .then(result => {
-                toast.success("Registration Successful");
-                navigate('/');
+                // saved the user info into the database
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            toast.success("Registration Successful");
+                            navigate('/');
+                        }
+                    })
             })
             .catch(err => setErrorMsg(err.message))
         console.log(data)
