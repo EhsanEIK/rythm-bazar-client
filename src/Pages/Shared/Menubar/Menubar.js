@@ -4,11 +4,9 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.jpg';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import useUserInfo from '../../../hooks/useUserInfo';
 
 const Menubar = () => {
     const { user, logout } = useContext(AuthContext);
-    const { userInfo } = useUserInfo(user?.email);
 
     // handle log out for logging out a user from the website
     const handleLogout = () => {
