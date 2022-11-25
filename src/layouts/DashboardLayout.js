@@ -3,10 +3,12 @@ import toast from 'react-hot-toast';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
+import useSeller from '../hooks/useSeller';
 
 const DashboardLayout = () => {
     const { user, logout } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
 
     const navigate = useNavigate();
 
@@ -69,12 +71,26 @@ const DashboardLayout = () => {
                                             </li>
                                         </>
                                     }
-
-                                    <Link to='/addProduct'>Add Product</Link>
-                                    <Link to='/myBuyers'>My Buyers</Link>
-                                    <Link to='/myProducts'>My Products</Link>
-                                    <Link to='/myOrders'>My Orders</Link>
-                                    <Link to='/myWishlist'>My Wishlist</Link>
+                                    {
+                                        (user?.email && isSeller) &&
+                                        <>
+                                            <li className="rounded-sm">
+                                                <Link to='/dashboard/seller/addProduct'>Add Product</Link>
+                                            </li>
+                                            <li className="rounded-sm">
+                                                <Link to='/myProducts'>My Products</Link>
+                                            </li>
+                                            <li className="rounded-sm">
+                                                <Link to='/myBuyers'>My Buyers</Link>
+                                            </li>
+                                        </>
+                                    }
+                                    <li className="rounded-sm">
+                                        <Link to='/myOrders'>My Orders</Link>
+                                    </li>
+                                    <li className="rounded-sm">
+                                        <Link to='/myWishlist'>My Wishlist</Link>
+                                    </li>
 
                                     <li className="rounded-sm bg-gray-100 text-gray-900">
                                         <Link rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">

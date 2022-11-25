@@ -9,7 +9,7 @@ import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
-import AddProduct from "../../Pages/Products/AddProduct/AddProduct";
+import AddProduct from "../../Pages/Dashboard/Seller/AddProduct/AddProduct";
 import Products from "../../Pages/Products/Products/Products";
 import Register from "../../Pages/Register/Register";
 import AdminRoute from "../AdminRoute/AdminRoute";
@@ -33,10 +33,6 @@ const router = createBrowserRouter([
                 path: '/products/categories/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
-            },
-            {
-                path: '/addProduct',
-                element: <AddProduct></AddProduct>
             },
         ]
     },
@@ -70,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/admin/allBuyers',
                 element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path: '/dashboard/seller/addProduct',
+                element: <AddProduct></AddProduct>
             },
         ]
     }

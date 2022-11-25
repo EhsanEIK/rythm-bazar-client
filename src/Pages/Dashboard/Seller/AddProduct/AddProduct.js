@@ -2,8 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import useUserInfo from '../../../hooks/useUserInfo';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
+import useUserInfo from '../../../../hooks/useUserInfo';
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext);
