@@ -81,7 +81,12 @@ const router = createBrowserRouter([
                 element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
-                path: '/dashboard/payment',
+                path: '/dashboard/payment/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/orders/payment/${params.id}`, {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+                    }
+                }),
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>
             },
         ]

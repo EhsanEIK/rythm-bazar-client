@@ -49,7 +49,7 @@ const MyOrders = () => {
                                         {
                                             order.paid ?
                                                 <span className='text-green-700 font-semibold text-sm'>Paid</span>
-                                                : <Link to='/dashboard/payment'>
+                                                : <Link to={`/dashboard/payment/${order._id}`}>
                                                     <button className='btn btn-sm bg-blue-600 border-blue-600 hover:bg-blue-700 text-white'>Payment</button>
                                                 </Link>
                                         }
