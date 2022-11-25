@@ -11,7 +11,7 @@ const CheckoutForm = ({ order }) => {
     const stripe = useStripe();
     const elements = useElements();
 
-    const { _id, price, buyerEmail, buyerName, sellerEmail } = order;
+    const { _id, productId, price, buyerEmail, buyerName, sellerEmail } = order;
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -81,6 +81,7 @@ const CheckoutForm = ({ order }) => {
                 price,
                 transactionId: paymentIntent.id,
                 orderId: _id,
+                productId,
             }
 
             fetch('http://localhost:5000/payments', {

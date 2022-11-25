@@ -2,12 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import useUserInfo from '../../../../hooks/useUserInfo';
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext);
     const [userInfo] = useUserInfo(user?.email);
+
+    const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors }, } = useForm();
 
@@ -49,7 +52,8 @@ const AddProducts = () => {
                         condition: data.condition,
                         category: data.category,
                         image: imageURL,
-                        date: date + ''
+                        date: date + '',
+                        salesStatus: 'available'
                     }
 
                     // save the product details into the database
@@ -65,6 +69,7 @@ const AddProducts = () => {
                         .then(data => {
                             if (data.acknowledged) {
                                 toast.success('Product added successfully');
+                                navigate('/dashboard/seller/myProducts');
                                 event.target.reset();
                             }
                         })
