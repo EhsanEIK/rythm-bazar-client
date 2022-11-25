@@ -53,7 +53,8 @@ const AddProducts = () => {
                         category: data.category,
                         image: imageURL,
                         date: date + '',
-                        salesStatus: 'available'
+                        salesStatus: 'available',
+                        advertised: false,
                     }
 
                     // save the product details into the database
