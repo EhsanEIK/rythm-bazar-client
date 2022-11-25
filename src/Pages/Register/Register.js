@@ -41,8 +41,22 @@ const Register = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.acknowledged) {
-                            toast.success("Registration Successful");
-                            navigate('/');
+                            // get jwt token and saved it into the local storage
+                            fetch('http://localhost:5000/jwt', {
+                                method: "POST",
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(user)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.token) {
+                                        localStorage.setItem('rythmBazarToken', data.token);
+                                        toast.success("Registration Successful");
+                                        navigate('/');
+                                    }
+                                })
                         }
                     })
             })
