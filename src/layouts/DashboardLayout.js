@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
     const { user, logout } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email);
 
     const navigate = useNavigate();
 
@@ -51,16 +53,22 @@ const DashboardLayout = () => {
                                             <span>Home</span>
                                         </Link>
                                     </li>
-                                    <li className="rounded-sm">
-                                        <Link to='/dashboard/admin/allSellers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                            <span>All Sellers</span>
-                                        </Link>
-                                    </li>
-                                    <li className="rounded-sm">
-                                        <Link to='/dashboard/admin/allBuyers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                            <span>All Buyers</span>
-                                        </Link>
-                                    </li>
+                                    {/* if user role is admin then following route will show */}
+                                    {
+                                        (user?.email && isAdmin) &&
+                                        <>
+                                            <li className="rounded-sm">
+                                                <Link to='/dashboard/admin/allSellers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                                    <span>All Sellers</span>
+                                                </Link>
+                                            </li>
+                                            <li className="rounded-sm">
+                                                <Link to='/dashboard/admin/allBuyers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                                    <span>All Buyers</span>
+                                                </Link>
+                                            </li>
+                                        </>
+                                    }
 
                                     <Link to='/addProduct'>Add Product</Link>
                                     <Link to='/myBuyers'>My Buyers</Link>
