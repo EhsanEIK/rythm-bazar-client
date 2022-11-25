@@ -15,6 +15,7 @@ import Register from "../../Pages/Register/Register";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
+import Buyer from "../../Pages/Dashboard/Buyer/Buyer/Buyer";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/seller/addProduct',
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/dashboard/buyer/myOrders',
+                element: <Buyer></Buyer>
             },
         ]
     }

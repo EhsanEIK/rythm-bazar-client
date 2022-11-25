@@ -86,7 +86,7 @@ const DashboardLayout = () => {
                                         </>
                                     }
                                     <li className="rounded-sm">
-                                        <Link to='/myOrders'>My Orders</Link>
+                                        <Link to='/dashboard/buyer/myOrders'>My Orders</Link>
                                     </li>
                                     <li className="rounded-sm">
                                         <Link to='/myWishlist'>My Wishlist</Link>
