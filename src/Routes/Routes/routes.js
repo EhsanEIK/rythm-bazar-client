@@ -5,7 +5,6 @@ import Admin from "../../Pages/Dashboard/Admin/Admin/Admin";
 import AllBuyers from "../../Pages/Dashboard/Admin/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/Admin/AllSellers/AllSellers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
-
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -15,7 +14,6 @@ import Register from "../../Pages/Register/Register";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
-import Buyer from "../../Pages/Dashboard/Buyer/Buyer/Buyer";
 import MyOrders from "../../Pages/Dashboard/Buyer/MyOrders/MyOrders";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import Payment from "../../Pages/Dashboard/Buyer/Payment/Payment";
