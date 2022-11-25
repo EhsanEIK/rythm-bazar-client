@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import AdminLayout from "../../layouts/AdminLayout";
+import DashboardLayout from "../../layouts/DashboardLayout";
 import Main from "../../layouts/Main";
-import Admin from "../../Pages/Admin/Admin/Admin";
-import AllBuyers from "../../Pages/Admin/AllBuyers/AllBuyers";
-import AllSellers from "../../Pages/Admin/AllSellers/AllSellers";
+import Admin from "../../Pages/Dashboard/Admin/Admin/Admin";
+import AllBuyers from "../../Pages/Dashboard/Admin/AllBuyers/AllBuyers";
+import AllSellers from "../../Pages/Dashboard/Admin/AllSellers/AllSellers";
+import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -48,21 +50,25 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>
     },
     {
-        path: '/admin',
-        element: <AdminLayout></AdminLayout>,
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: '/admin',
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            },
+            {
+                path: '/dashboard/admin',
                 element: <Admin></Admin>
             },
             {
-                path: '/admin/allSellers',
-                element: <AllSellers></AllSellers>,
+                path: '/dashboard/admin/allSellers',
+                element: <AllSellers></AllSellers>
             },
             {
-                path: '/admin/allBuyers',
-                element: <AllBuyers></AllBuyers>,
+                path: '/dashboard/admin/allBuyers',
+                element: <AllBuyers></AllBuyers>
             },
         ]
     }

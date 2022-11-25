@@ -50,13 +50,8 @@ const Menubar = () => {
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <Link to='/admin'>Admin</Link>
                 <Link to='/home'>Home</Link>
-                <Link to='/addProduct'>Add Product</Link>
-                <Link to='/myBuyers'>My Buyers</Link>
-                <Link to='/myProducts'>My Products</Link>
-                <Link to='/myOrders'>My Orders</Link>
-                <Link to='/myWishlist'>My Wishlist</Link>
+                <Link to='/dashboard'>Dashboard</Link>
             </Navbar.Collapse>
         </Navbar>
     );

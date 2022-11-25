@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
-const AdminLayout = () => {
+const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
 
     return (
@@ -39,15 +39,22 @@ const AdminLayout = () => {
                                         </Link>
                                     </li>
                                     <li className="rounded-sm">
-                                        <Link to='/admin/allSellers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                        <Link to='/dashboard/admin/allSellers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                             <span>All Sellers</span>
                                         </Link>
                                     </li>
                                     <li className="rounded-sm">
-                                        <Link to='/admin/allBuyers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                        <Link to='/dashboard/admin/allBuyers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                             <span>All Buyers</span>
                                         </Link>
                                     </li>
+
+                                    <Link to='/addProduct'>Add Product</Link>
+                                    <Link to='/myBuyers'>My Buyers</Link>
+                                    <Link to='/myProducts'>My Products</Link>
+                                    <Link to='/myOrders'>My Orders</Link>
+                                    <Link to='/myWishlist'>My Wishlist</Link>
+
                                     <li className="rounded-sm bg-gray-100 text-gray-900">
                                         <Link rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                             <span>Reported Items</span>
@@ -76,11 +83,8 @@ const AdminLayout = () => {
                     </div>
                 </div>
             </div>
-            <div className='ml-10 mt-14'>
-
-            </div>
         </div>
     );
 };
 
-export default AdminLayout;
+export default DashboardLayout;
