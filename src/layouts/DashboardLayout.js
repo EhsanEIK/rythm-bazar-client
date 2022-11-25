@@ -85,7 +85,7 @@ const DashboardLayout = () => {
                                                 <Link to='/dashboard/seller/addProduct'>Add Product</Link>
                                             </li>
                                             <li className="rounded-sm">
-                                                <Link to='/myProducts'>My Products</Link>
+                                                <Link to='/dashboard/seller/myProducts'>My Products</Link>
                                             </li>
                                             <li className="rounded-sm">
                                                 <Link to='/myBuyers'>My Buyers</Link>
