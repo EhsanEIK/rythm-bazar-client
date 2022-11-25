@@ -12,6 +12,7 @@ import Login from "../../Pages/Login/Login";
 import AddProduct from "../../Pages/Products/AddProduct/AddProduct";
 import Products from "../../Pages/Products/Products/Products";
 import Register from "../../Pages/Register/Register";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
@@ -60,15 +61,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/admin',
-                element: <Admin></Admin>
+                element: <AdminRoute><Admin></Admin></AdminRoute>
             },
             {
                 path: '/dashboard/admin/allSellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/admin/allBuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
         ]
     }
