@@ -10,7 +10,7 @@ const AdvertisedItems = () => {
         .then(data => {
             setItems(data.data)
             items.map(item => {
-                if (item.advertised) {
+                if (item.salesStatus === 'available' && item.advertised) {
                     const newItem = item;
                     setAdvertiseItems(items, newItem);
                 }
