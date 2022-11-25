@@ -27,7 +27,6 @@ const MyProducts = () => {
                             <th>Title</th>
                             <th>Reslae Price</th>
                             <th>Original Price</th>
-                            <th>Category</th>
                             <th>Sales Status</th>
                             <th>Action</th>
                         </tr>
@@ -45,7 +44,6 @@ const MyProducts = () => {
                                     <td>{product.productName}</td>
                                     <td>{product.resalePrice}</td>
                                     <td>{product.origianlPrice}</td>
-                                    <td>{product.category}</td>
                                     <td>
                                         {
                                             product.salesStatus === 'sold' ?
@@ -55,6 +53,10 @@ const MyProducts = () => {
                                         }
                                     </td>
                                     <td>
+                                        {
+                                            product.salesStatus === 'available' &&
+                                            <button className='btn btn-sm bg-green-700 border-green-700 hover:bg-green-800 mr-5'>Advertise Now</button>
+                                        }
                                         <button className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
                                     </td>
                                 </tr>)

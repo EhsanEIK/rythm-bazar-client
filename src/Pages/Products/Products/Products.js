@@ -10,7 +10,6 @@ const Products = () => {
     const closeBookingModal = () => {
         setProductDetalis(null);
     }
-    console.log(products)
 
     return (
         <div className='my-10'>
