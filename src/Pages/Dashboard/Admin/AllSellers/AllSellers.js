@@ -5,7 +5,11 @@ import toast from 'react-hot-toast';
 const AllSellers = () => {
     const { data: allSellers = [], refetch } = useQuery({
         queryKey: ['/users/sellers'],
-        queryFn: () => fetch('http://localhost:5000/users/sellers')
+        queryFn: () => fetch('http://localhost:5000/users/sellers', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
+        })
             .then(res => res.json())
     })
 
