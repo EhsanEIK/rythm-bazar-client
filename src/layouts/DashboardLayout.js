@@ -1,9 +1,22 @@
 import React, { useContext } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
 const DashboardLayout = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    // handle log out for logging out a user from the website
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                toast.success("Logout Successful");
+                navigate('/');
+            })
+            .catch(err => console.error(err))
+    }
 
     return (
         <div>
@@ -66,7 +79,7 @@ const DashboardLayout = () => {
                                                 <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
                                                 <rect width="32" height="64" x="256" y="232"></rect>
                                             </svg>
-                                            <span>Logout</span>
+                                            <span onClick={handleLogout}>Logout</span>
                                         </Link>
                                     </li>
                                 </ul>
