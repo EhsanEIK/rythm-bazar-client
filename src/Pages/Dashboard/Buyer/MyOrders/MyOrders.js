@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
 const MyOrders = () => {
@@ -48,7 +49,9 @@ const MyOrders = () => {
                                         {
                                             order.paid ?
                                                 <span className='text-green-700 font-semibold text-sm'>Paid</span>
-                                                : <button className='btn btn-sm bg-blue-600 hover:bg-blue-700 text-white'>Payment</button>
+                                                : <Link to='/dashboard/payment'>
+                                                    <button className='btn btn-sm bg-blue-600 border-blue-600 hover:bg-blue-700 text-white'>Payment</button>
+                                                </Link>
                                         }
                                     </td>
                                 </tr>)
