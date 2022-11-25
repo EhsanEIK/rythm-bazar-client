@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 const CheckoutForm = ({ order }) => {
     const [cardErrorMsg, setCardErrorMsg] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-    const [transactionId, setTransactionId] = useState("");
+    const [transactionId, setTransactionId] = useState(null);
     const [processing, setProcessing] = useState(false);
 
     const stripe = useStripe();
@@ -30,6 +30,7 @@ const CheckoutForm = ({ order }) => {
     // handle payment submit
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setTransactionId(null);
         if (!stripe || !elements) {
             return;
         }
@@ -123,6 +124,11 @@ const CheckoutForm = ({ order }) => {
                 Pay
             </button>
             <p className='text-red-600 my-3'>{cardErrorMsg}</p>
+            {
+                transactionId && <>
+                    <p className='my-2'>Your Transaction ID: {transactionId}</p>
+                </>
+            }
         </form>
 
     );
