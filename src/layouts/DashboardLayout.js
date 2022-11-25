@@ -3,12 +3,14 @@ import toast from 'react-hot-toast';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
+import useBuyer from '../hooks/useBuyer';
 import useSeller from '../hooks/useSeller';
 
 const DashboardLayout = () => {
     const { user, logout } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email);
+    const [isBuyer] = useBuyer(user?.email);
 
     const navigate = useNavigate();
 
@@ -60,13 +62,18 @@ const DashboardLayout = () => {
                                         (user?.email && isAdmin) &&
                                         <>
                                             <li className="rounded-sm">
-                                                <Link to='/dashboard/admin/allSellers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                                    <span>All Sellers</span>
+                                                <Link to='/dashboard/admin/allSellers' className="flex items-center p-2 space-x-3 rounded-md">
+                                                    All Sellers
                                                 </Link>
                                             </li>
                                             <li className="rounded-sm">
-                                                <Link to='/dashboard/admin/allBuyers' rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                                    <span>All Buyers</span>
+                                                <Link to='/dashboard/admin/allBuyers' className="flex items-center p-2 space-x-3 rounded-md">
+                                                    All Buyers
+                                                </Link>
+                                            </li>
+                                            <li className="rounded-sm">
+                                                <Link className="flex items-center p-2 space-x-3 rounded-md">
+                                                    Reported Items
                                                 </Link>
                                             </li>
                                         </>
@@ -85,18 +92,17 @@ const DashboardLayout = () => {
                                             </li>
                                         </>
                                     }
-                                    <li className="rounded-sm">
-                                        <Link to='/dashboard/buyer/myOrders'>My Orders</Link>
-                                    </li>
-                                    <li className="rounded-sm">
-                                        <Link to='/myWishlist'>My Wishlist</Link>
-                                    </li>
-
-                                    <li className="rounded-sm bg-gray-100 text-gray-900">
-                                        <Link rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                            <span>Reported Items</span>
-                                        </Link>
-                                    </li>
+                                    {
+                                        (user?.email && isBuyer) &&
+                                        <>
+                                            <li className="rounded-sm">
+                                                <Link to='/dashboard/buyer/myOrders'>My Orders</Link>
+                                            </li>
+                                            <li className="rounded-sm">
+                                                <Link to='/myWishlist'>My Wishlist</Link>
+                                            </li>
+                                        </>
+                                    }
                                     <li className="rounded-sm">
                                         <Link rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current text-gray-600">

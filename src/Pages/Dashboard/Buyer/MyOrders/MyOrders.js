@@ -7,7 +7,11 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
 
     // loaded orders based on buyer email
-    axios.get(`http://localhost:5000/orders/${user?.email}`)
+    axios.get(`http://localhost:5000/orders/${user?.email}`, {
+        headers: {
+            authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+        }
+    })
         .then(data => setOrders(data.data));
 
     return (
