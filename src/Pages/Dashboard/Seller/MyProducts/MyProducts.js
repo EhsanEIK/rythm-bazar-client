@@ -46,7 +46,14 @@ const MyProducts = () => {
                                     <td>{product.resalePrice}</td>
                                     <td>{product.origianlPrice}</td>
                                     <td>{product.category}</td>
-                                    <td>{product?.salesStatus}</td>
+                                    <td>
+                                        {
+                                            product.salesStatus === 'sold' ?
+                                                <span className='text-red-600 font-semibold'>{product.salesStatus}</span>
+                                                :
+                                                <span className='text-green-600 font-semibold'>{product.salesStatus}</span>
+                                        }
+                                    </td>
                                     <td>
                                         <button className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
                                     </td>
