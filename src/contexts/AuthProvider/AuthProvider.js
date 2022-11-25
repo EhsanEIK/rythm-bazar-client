@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
 
     // logout
     const logout = () => {
+        localStorage.removeItem('rythmBazarToken');
         setLoading(true);
         return signOut(auth);
     }
