@@ -1,22 +1,19 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Item from './Item';
 
 const AdvertisedItems = () => {
     const [advertiseItems, setAdvertiseItems] = useState([]);
-    const [items, setItems] = useState([]);
 
-    axios.get('http://localhost:5000/products')
-        .then(data => {
-            setItems(data.data)
-            items.map(item => {
-                if (item.salesStatus === 'available' && item.advertised) {
-                    const newItem = item;
-                    setAdvertiseItems(items, newItem);
-                }
+    // loaded only advertised items which are published for advertising
+    useEffect(() => {
+        axios.get('http://localhost:5000/products')
+            .then(data => {
+                const items = data.data;
+                const newItems = items.filter(item => item.advertised);
+                setAdvertiseItems(newItems)
             })
-        })
-        .catch(err => console.error(err))
+    }, [])
 
     return (
         advertiseItems.length !== 0 &&

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
@@ -8,12 +8,14 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
 
     // loaded orders based on buyer email
-    axios.get(`http://localhost:5000/orders/${user?.email}`, {
-        headers: {
-            authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
-        }
-    })
-        .then(data => setOrders(data.data));
+    useEffect(() => {
+        axios.get(`http://localhost:5000/orders/${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
+        })
+            .then(data => setOrders(data.data));
+    }, [user?.email])
 
     return (
         <div>
