@@ -11,7 +11,7 @@ const AdvertisedItems = () => {
             .then(data => {
                 const items = data.data;
                 const newItems = items.filter(item => (item.advertised && item.salesStatus !== 'sold'));
-                setAdvertiseItems(newItems)
+                setAdvertiseItems(newItems);
             })
     }, [])
 

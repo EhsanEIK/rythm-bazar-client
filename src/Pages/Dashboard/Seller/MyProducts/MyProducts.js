@@ -34,6 +34,23 @@ const MyProducts = () => {
             })
     }
 
+    // handle delete product from db
+    const handleDeleteProduct = product => {
+        fetch(`http://localhost:5000/products/${product._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success(`${product.productName}} has been deleted successfully!`);
+                    refetch();
+                }
+            })
+    }
+
     return (
         <div>
             <h1 className='text-2xl font-semibold mb-14'>My Products: {myProducts.length}</h1>
@@ -76,7 +93,7 @@ const MyProducts = () => {
                                             (product.salesStatus === 'available' && !product.advertised) &&
                                             <button onClick={() => handleAdvertisItem(product)} className='btn btn-sm bg-green-700 border-green-700 hover:bg-green-800 mr-5'>Advertise Now</button>
                                         }
-                                        <button className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
+                                        <button onClick={() => handleDeleteProduct(product)} className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
                                     </td>
                                 </tr>)
                         }
