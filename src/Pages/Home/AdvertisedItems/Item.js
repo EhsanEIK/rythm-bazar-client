@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaCheckCircle } from 'react-icons/fa';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useUserInfo from '../../../hooks/useUserInfo';
 
 const Item = ({ item, setProductDetalis }) => {
+    const { user } = useContext(AuthContext);
+
     const { image, sellerName, email, productName, resalePrice, origianlPrice, yearsOfUse, date, location, phoneNumber, condition } = item;
 
     const [userInfo] = useUserInfo(email);
+
+    //  handle admin report
+    const handleAdminReport = item => {
+        const reportedItems = {
+            itemId: item._id,
+            itemName: productName,
+            sellerEmail: email,
+            buyerEmail: user?.email,
+        }
+
+        fetch('http://localhost:5000/reportedItems', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            },
+            body: JSON.stringify(reportedItems)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Reported to admin successfully");
+                }
+            })
+    }
 
     return (
         <div>
@@ -24,12 +53,7 @@ const Item = ({ item, setProductDetalis }) => {
                             <span className="inline-block text-xs leading-none text-gray-600 mt-2"><b>Post Time:</b> {date}</span>
                         </div>
                     </div>
-                    <button className='btn bg-red-700 border-red-700 hover:bg-red-800 btn-sm'>Report to Admin</button>
-                    {/* <button type="button" title="Bookmark post" className="flex items-center justify-center ml-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                            <path d="M424,496H388.75L256.008,381.19,123.467,496H88V16H424ZM120,48V456.667l135.992-117.8L392,456.5V48Z"></path>
-                        </svg>
-                    </button> */}
+                    <button onClick={() => handleAdminReport(item)} className='btn bg-red-700 border-red-700 hover:bg-red-800 btn-sm'>Report to Admin</button>
                 </div>
                 <img src={image} alt="" className="object-cover object-center w-full h-72 bg-gray-500" />
                 <div className="p-3">
