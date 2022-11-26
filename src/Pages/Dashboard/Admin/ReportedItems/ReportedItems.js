@@ -1,8 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const ReportedItems = () => {
-    const { data: reportedItems = [] } = useQuery({
+
+    // load all the reported items
+    const { data: reportedItems = [], refetch } = useQuery({
         queryKey: ['reportedItems'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/reportedItems', {
@@ -14,6 +17,29 @@ const ReportedItems = () => {
             return data;
         }
     })
+
+    // handle delete reported item from db
+    const handleDeleteReportedItem = item => {
+        const agree = window.confirm('Are you sure to delete this product from server?');
+        if (agree) {
+            fetch(`http://localhost:5000/reportedItems/${item._id}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+                },
+                body: JSON.stringify({
+                    itemId: item.itemId
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Product deleted successfully');
+                        refetch();
+                    }
+                })
+        }
+    }
 
     return (
         <div>
@@ -38,7 +64,7 @@ const ReportedItems = () => {
                                     <td>{item.buyerEmail}</td>
                                     <td>{item.sellerEmail}</td>
                                     <td>
-                                        <button className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
+                                        <button onClick={() => handleDeleteReportedItem(item)} className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
                                     </td>
                                 </tr>)
                         }
