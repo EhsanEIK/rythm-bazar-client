@@ -2,6 +2,7 @@ import React from 'react';
 import About from '../About/About';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import Categories from '../Categories/Categories';
+import Contact from '../Contact/Contact';
 import Slider from '../Slider/Slider';
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
             <About></About>
             <AdvertisedItems></AdvertisedItems>
             <Categories></Categories>
+            <Contact></Contact>
         </div>
     );
 };
