@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
 import useBuyer from '../hooks/useBuyer';
 import useSeller from '../hooks/useSeller';
+import Footer from '../Pages/Shared/Footer/Footer';
 
 const DashboardLayout = () => {
     const { user, logout } = useContext(AuthContext);
@@ -31,7 +32,6 @@ const DashboardLayout = () => {
                 <div className="drawer-content flex flex-col ml-10 mt-16">
                     <Outlet></Outlet>
                     <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
@@ -126,6 +126,7 @@ const DashboardLayout = () => {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };
