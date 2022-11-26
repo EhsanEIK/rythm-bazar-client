@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
 
-    const { data: myProducts = [] } = useQuery({
+    const { data: myProducts = [], refetch } = useQuery({
         queryKey: ['/products/:email', email],
         queryFn: async function () {
             const res = await fetch(`http://localhost:5000/products/?email=${email}`);
@@ -14,6 +15,24 @@ const MyProducts = () => {
             return data;
         }
     })
+
+    // handle advertise item to permit the product advertised in the website
+    const handleAdvertisItem = product => {
+        fetch(`http://localhost:5000/products/${product._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Product has been published in the website successfully!');
+                    refetch();
+                }
+            })
+    }
 
     return (
         <div>
@@ -54,8 +73,8 @@ const MyProducts = () => {
                                     </td>
                                     <td>
                                         {
-                                            product.salesStatus === 'available' &&
-                                            <button className='btn btn-sm bg-green-700 border-green-700 hover:bg-green-800 mr-5'>Advertise Now</button>
+                                            (product.salesStatus === 'available' && !product.advertised) &&
+                                            <button onClick={() => handleAdvertisItem(product)} className='btn btn-sm bg-green-700 border-green-700 hover:bg-green-800 mr-5'>Advertise Now</button>
                                         }
                                         <button className='btn btn-sm bg-red-700 border-red-700 hover:bg-red-800'>Delete</button>
                                     </td>

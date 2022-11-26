@@ -13,7 +13,7 @@ const Products = () => {
 
     return (
         <div className='my-10'>
-            <h1 className='text-5xl text-center font-semibold mb-14'>All Products {products.length}</h1>
+            <h1 className='text-5xl text-center font-semibold mb-14'>All Products</h1>
 
             {
                 products.length === 0 ?
