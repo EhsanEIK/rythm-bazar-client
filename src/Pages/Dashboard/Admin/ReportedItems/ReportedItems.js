@@ -25,6 +25,7 @@ const ReportedItems = () => {
             fetch(`http://localhost:5000/reportedItems/${item._id}`, {
                 method: "DELETE",
                 headers: {
+                    'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
                 },
                 body: JSON.stringify({
