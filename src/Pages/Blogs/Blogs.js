@@ -35,6 +35,14 @@ const Blogs = () => {
                 </p>
                 <img className='mt-5' src={prototypalInheriance} alt="prototypalInheriance" />
             </div>
+            {/* blog-03 */}
+            <div className='bg-slate-100 rounded-lg p-10 mb-20'>
+                <h2 className='md:text-3xl text-lg font-bold mb-5'>3. What is a unit test? Why should we write unit tests?</h2>
+                <p>Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. This testing methodology is done during the development process by the software developers and sometimes QA staff.  The main objective of unit testing is to isolate written code to test and determine if it works as intended.
+                    <br /><br />
+                    A unit test typically comprises of three stages: plan, cases and scripting and the unit test itself. In the first step, the unit test is prepared and reviewed. The next step is for the test cases and scripts to be made, then the code is tested. Test-driven development requires that developers first write failing unit tests. Then they write code and refactor the application until the test passes. TDD typically results in an explicit and predictable code base. Each test case is tested independently in an isolated environment, as to ensure a lack of dependencies in the code. The software developer should code criteria to verify each test case, and a testing framework can be used to report any failed tests. Developers should not make a test for every line of code, as this may take up too much time. Developers should then create tests focusing on code which could affect the behavior of the software being developed.
+                </p>
+            </div>
         </div>
     );
 };
