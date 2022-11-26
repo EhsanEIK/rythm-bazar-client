@@ -2,8 +2,8 @@ import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import useUserInfo from '../../../hooks/useUserInfo';
 
-const Item = ({ item }) => {
-    const { _id, image, sellerName, email, productName, resalePrice, origianlPrice, yearsOfUse, date, location, phoneNumber, condition } = item;
+const Item = ({ item, setProductDetalis }) => {
+    const { image, sellerName, email, productName, resalePrice, origianlPrice, yearsOfUse, date, location, phoneNumber, condition } = item;
 
     const [userInfo] = useUserInfo(email);
 
@@ -37,11 +37,11 @@ const Item = ({ item }) => {
                     <p className='text-lg'><b>Origianl Price:</b> ${origianlPrice}</p>
                     <p className='text-lg'><b>Used (in year):</b> {yearsOfUse}</p>
                     <p className='text-lg'><b>Phone:</b> {phoneNumber}</p>
-                    {/* {
+                    {
                         userInfo.verified ?
-                            <label onClick={() => setProductDetalis(product)} htmlFor="booking-modal" className='btn bg-teal-700 w-full mt-5'>Book Now</label>
+                            <label onClick={() => setProductDetalis(item)} htmlFor="booking-modal" className='btn bg-teal-700 w-full mt-5'>Book Now</label>
                             : <span className='text-red-600 text-center'>User is not verified yet</span>
-                    } */}
+                    }
                 </div>
             </div>
         </div>

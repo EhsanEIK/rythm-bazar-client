@@ -50,7 +50,10 @@ const BookingModal = ({ productDetails, closeBookingModal, setProductDetalis }) 
             <div className="modal">
                 <form onSubmit={handleSubmit(handleBookOrder)} className="modal-box">
                     <h3 className="font-bold text-lg">{productName}</h3>
-                    <p className="py-4">{userInfo?.name}</p>
+                    <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Buyer Name</span></label>
+                        <input type="text" className="input input-bordered w-full" value={userInfo?.name} disabled />
+                    </div>
                     <div className="form-control w-full">
                         <label className="label"><span className="label-text">Phone Number</span></label>
                         <input type="text"

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import BookingModal from '../../Products/Products/BookingModal';
 import Item from './Item';
 
 const AdvertisedItems = () => {
@@ -15,6 +16,12 @@ const AdvertisedItems = () => {
             })
     }, [])
 
+    const [productDetails, setProductDetalis] = useState('');
+
+    const closeBookingModal = () => {
+        setProductDetalis(null);
+    }
+
     return (
         advertiseItems.length !== 0 &&
         <section className='mt-40'>
@@ -23,9 +30,16 @@ const AdvertisedItems = () => {
                 {
                     advertiseItems.map(item => <Item
                         key={item._id}
-                        item={item}></Item>)
+                        item={item}
+                        setProductDetalis={setProductDetalis}></Item>)
                 }
             </div>
+            {
+                productDetails && <BookingModal
+                    productDetails={productDetails}
+                    closeBookingModal={closeBookingModal}
+                    setProductDetalis={setProductDetalis}></BookingModal>
+            }
         </section>
     );
 };
