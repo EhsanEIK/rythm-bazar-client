@@ -13,21 +13,23 @@ const Item = ({ item, setProductDetalis }) => {
                 <div className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
                         <div className="-space-y-1">
-                            <h2 className="text-sm font-semibold leading-none"><b>Seller Name:</b> {sellerName}</h2>
+                            <h2 className="text-sm font-semibold leading-none flex"><b className='mr-2'>Seller Name:</b> {sellerName}
+                                {
+                                    userInfo.verified && <FaCheckCircle
+                                        className='text-blue-500 text-md ml-2'
+                                        title='Verified User' />
+                                }
+                            </h2>
                             <span className="inline-block text-xs leading-none text-gray-600"><b>Location:</b> {location}</span>
                             <span className="inline-block text-xs leading-none text-gray-600 mt-2"><b>Post Time:</b> {date}</span>
                         </div>
                     </div>
-                    {
-                        userInfo.verified && <FaCheckCircle
-                            className='text-blue-500 text-3xl'
-                            title='Verified User' />
-                    }
-                    <button type="button" title="Bookmark post" className="flex items-center justify-center ml-2">
+                    <button className='btn bg-red-700 border-red-700 hover:bg-red-800 btn-sm'>Report to Admin</button>
+                    {/* <button type="button" title="Bookmark post" className="flex items-center justify-center ml-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
                             <path d="M424,496H388.75L256.008,381.19,123.467,496H88V16H424ZM120,48V456.667l135.992-117.8L392,456.5V48Z"></path>
                         </svg>
-                    </button>
+                    </button> */}
                 </div>
                 <img src={image} alt="" className="object-cover object-center w-full h-72 bg-gray-500" />
                 <div className="p-3">
