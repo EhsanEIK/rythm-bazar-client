@@ -18,6 +18,7 @@ import MyOrders from "../../Pages/Dashboard/Buyer/MyOrders/MyOrders";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import Payment from "../../Pages/Dashboard/Buyer/Payment/Payment";
 import MyProducts from "../../Pages/Dashboard/Seller/MyProducts/MyProducts";
+import ReportedItems from "../../Pages/Dashboard/Admin/ReportedItems/ReportedItems";
 
 const router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/admin/allBuyers',
                 element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path: '/dashboard/admin/reportedItems',
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             },
             {
                 path: '/dashboard/seller/addProduct',

@@ -72,7 +72,7 @@ const DashboardLayout = () => {
                                                 </Link>
                                             </li>
                                             <li className="rounded-sm">
-                                                <Link className="flex items-center p-2 space-x-3 rounded-md">
+                                                <Link to='/dashboard/admin/reportedItems' className="flex items-center p-2 space-x-3 rounded-md">
                                                     Reported Items
                                                 </Link>
                                             </li>
