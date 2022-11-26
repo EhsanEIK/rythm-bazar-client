@@ -4,7 +4,7 @@ const useAdmin = email => {
     const [isAdmin, setIsAdmin] = useState('');
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:5000/users/checkAdmin/${email}`)
+        fetch(`https://rythm-bazar-server.vercel.app/users/checkAdmin/${email}`)
             .then(res => res.json())
             .then(data => {
                 setIsAdmin(data.isAdmin);

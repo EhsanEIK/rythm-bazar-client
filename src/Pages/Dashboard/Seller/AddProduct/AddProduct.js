@@ -17,7 +17,7 @@ const AddProducts = () => {
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
         queryFn: async function () {
-            const res = await fetch('http://localhost:5000/categories');
+            const res = await fetch('https://rythm-bazar-server.vercel.app/categories');
             const data = res.json();
             return data;
         }
@@ -58,7 +58,7 @@ const AddProducts = () => {
                     }
 
                     // save the product details into the database
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://rythm-bazar-server.vercel.app/products', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',

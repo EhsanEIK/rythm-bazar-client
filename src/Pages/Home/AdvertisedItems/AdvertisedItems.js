@@ -8,7 +8,7 @@ const AdvertisedItems = () => {
 
     // loaded only advertised items which are published for advertising
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://rythm-bazar-server.vercel.app/products')
             .then(data => {
                 const items = data.data;
                 const newItems = items.filter(item => (item.advertised && item.salesStatus !== 'sold'));

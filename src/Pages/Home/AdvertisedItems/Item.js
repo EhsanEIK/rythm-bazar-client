@@ -20,7 +20,7 @@ const Item = ({ item, setProductDetalis }) => {
             buyerEmail: user?.email,
         }
 
-        fetch('http://localhost:5000/reportedItems', {
+        fetch('https://rythm-bazar-server.vercel.app/reportedItems', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',

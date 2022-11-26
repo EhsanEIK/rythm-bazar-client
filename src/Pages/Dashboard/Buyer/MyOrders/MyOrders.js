@@ -9,7 +9,7 @@ const MyOrders = () => {
 
     // loaded orders based on buyer email
     useEffect(() => {
-        axios.get(`http://localhost:5000/orders/${user?.email}`, {
+        axios.get(`https://rythm-bazar-server.vercel.app/orders/${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
             }

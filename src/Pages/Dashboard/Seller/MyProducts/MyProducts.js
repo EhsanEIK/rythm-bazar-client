@@ -10,7 +10,7 @@ const MyProducts = () => {
     const { data: myProducts = [], refetch } = useQuery({
         queryKey: ['/products/:email', email],
         queryFn: async function () {
-            const res = await fetch(`http://localhost:5000/products/?email=${email}`);
+            const res = await fetch(`https://rythm-bazar-server.vercel.app/products/?email=${email}`);
             const data = await res.json();
             return data;
         }
@@ -18,7 +18,7 @@ const MyProducts = () => {
 
     // handle advertise item to permit the product advertised in the website
     const handleAdvertisItem = product => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://rythm-bazar-server.vercel.app/products/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -36,7 +36,7 @@ const MyProducts = () => {
 
     // handle delete product from db
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://rythm-bazar-server.vercel.app/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,

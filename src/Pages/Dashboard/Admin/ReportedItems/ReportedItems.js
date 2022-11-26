@@ -8,7 +8,7 @@ const ReportedItems = () => {
     const { data: reportedItems = [], refetch } = useQuery({
         queryKey: ['reportedItems'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportedItems', {
+            const res = await fetch('https://rythm-bazar-server.vercel.app/reportedItems', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
                 }
@@ -22,7 +22,7 @@ const ReportedItems = () => {
     const handleDeleteReportedItem = item => {
         const agree = window.confirm('Are you sure to delete this product from server?');
         if (agree) {
-            fetch(`http://localhost:5000/reportedItems/${item._id}`, {
+            fetch(`https://rythm-bazar-server.vercel.app/reportedItems/${item._id}`, {
                 method: "DELETE",
                 headers: {
                     'content-type': 'application/json',

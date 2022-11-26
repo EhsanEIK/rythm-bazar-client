@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 const AllBuyers = () => {
     const { data: allBuyers = [], refetch } = useQuery({
         queryKey: ['/users/buyers'],
-        queryFn: () => fetch('http://localhost:5000/users/buyers', {
+        queryFn: () => fetch('https://rythm-bazar-server.vercel.app/users/buyers', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
             }
@@ -16,7 +16,7 @@ const AllBuyers = () => {
     // handle delete buyer from db
     const handleDeleteBuyer = buyer => {
         const id = buyer._id;
-        fetch(`http://localhost:5000/users/buyers/${id}`, {
+        fetch(`https://rythm-bazar-server.vercel.app/users/buyers/${id}`, {
             method: "DELETE",
         })
             .then(res => res.json())

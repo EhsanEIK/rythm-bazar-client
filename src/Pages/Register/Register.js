@@ -31,7 +31,7 @@ const Register = () => {
         signUp(email, password)
             .then(result => {
                 // saved the user info into the database
-                fetch('http://localhost:5000/users', {
+                fetch('https://rythm-bazar-server.vercel.app/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json',
@@ -42,7 +42,7 @@ const Register = () => {
                     .then(data => {
                         if (data.acknowledged) {
                             // get jwt token and saved it into the local storage
-                            fetch('http://localhost:5000/jwt', {
+                            fetch('https://rythm-bazar-server.vercel.app/jwt', {
                                 method: "POST",
                                 headers: {
                                     'content-type': 'application/json'
