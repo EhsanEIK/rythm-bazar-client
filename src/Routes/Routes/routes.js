@@ -19,6 +19,7 @@ import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import Payment from "../../Pages/Dashboard/Buyer/Payment/Payment";
 import MyProducts from "../../Pages/Dashboard/Seller/MyProducts/MyProducts";
 import ReportedItems from "../../Pages/Dashboard/Admin/ReportedItems/ReportedItems";
+import Blogs from "../../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
                 path: '/products/categories/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
+            },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
             },
         ]
     },
