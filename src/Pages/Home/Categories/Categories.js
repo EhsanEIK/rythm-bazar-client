@@ -28,7 +28,7 @@ const Categories = () => {
 
     return (
         <section className='mt-40 mb-10'>
-            < h1 className='text-5xl text-center font-semibold mb-14' > All Categories</h1 >
+            <h1 className='text-5xl text-center font-semibold mb-14' > All Categories</h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 md:mx-0 mx-3'>
                 {
                     categories.map(category => <Category
