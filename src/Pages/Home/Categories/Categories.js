@@ -5,20 +5,20 @@ import Loader from '../../Shared/Loader/Loader';
 import Category from './Category';
 
 const Categories = () => {
-    const [categories, setCategories] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data));
-    }, [])
-    // const { data: categories = [] } = useQuery({
-    //     queryKey: ['categories'],
-    //     queryFn: async function () {
-    //         const res = await fetch('http://localhost:5000/categories');
-    //         const data = res.json();
-    //         return data;
-    //     }
-    // })
+    // const [categories, setCategories] = useState([])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/categories')
+    //         .then(res => res.json())
+    //         .then(data => setCategories(data));
+    // }, [])
+    const { data: categories = [] } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async function () {
+            const res = await fetch('http://localhost:5000/categories');
+            const data = res.json();
+            return data;
+        }
+    })
 
     const navigation = useNavigation();
 
