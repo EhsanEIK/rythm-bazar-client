@@ -15,7 +15,7 @@ const BuyerRoute = ({ children }) => {
         return <Loader></Loader>;
     }
 
-    if (user?.email && isBuyer) {
+    if ((user?.email || user?.displayName) && isBuyer) {
         return children;
     }
     logout()

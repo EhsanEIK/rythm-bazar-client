@@ -34,7 +34,7 @@ const Menubar = () => {
                 <div className="flex md:order-2">
                     {
                         user ? <>
-                            <span className='text-md bg-slate-100 rounded-lg px-2 mr-3'>{user?.email}</span>
+                            <span className='text-md bg-slate-100 rounded-lg px-2 mr-3'>{user?.email || user?.displayName}</span>
                             <button onClick={handleLogout} className='bg-red-700 text-white rounded-lg px-4 py-1 hover:bg-red-800'>
                                 Log out
                             </button>

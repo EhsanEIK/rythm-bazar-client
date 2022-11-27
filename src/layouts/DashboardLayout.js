@@ -93,7 +93,7 @@ const DashboardLayout = () => {
                                         </>
                                     }
                                     {
-                                        (user?.email && isBuyer) &&
+                                        ((user?.email || user?.displayName) && isBuyer) &&
                                         <>
                                             <li className="rounded-sm">
                                                 <Link to='/dashboard/buyer/myOrders'>My Orders</Link>
