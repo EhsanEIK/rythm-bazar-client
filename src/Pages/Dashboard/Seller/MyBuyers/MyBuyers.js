@@ -47,13 +47,13 @@ const MyBuyers = () => {
                                     <td>
                                         {
                                             buyer.paid ? <span className='text-green-500 font-semibold'>Paid</span>
-                                                : <span className='text-green-500 font-semibold'>Unpaid</span>
+                                                : <span className='text-red-500 font-semibold'>Unpaid</span>
                                         }
                                     </td>
                                     <td>
                                         {
                                             buyer.transactionId ? <span className='text-green-500 font-semibold'>{buyer.transactionId}</span>
-                                                : <span className='text-green-500 font-semibold'>Not yet sold</span>
+                                                : <span className='text-red-500 font-semibold'>Not yet sold</span>
                                         }
                                     </td>
                                 </tr>)
