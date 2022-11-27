@@ -31,7 +31,7 @@ const MyBuyers = () => {
                             <th>Buyer Name</th>
                             <th>Buyer Email</th>
                             <th>Buyer Phone</th>
-                            <th>Payment Status</th>
+                            <th>Buyer Location</th>
                             <th>Transaction Id</th>
                         </tr>
                     </thead>
@@ -44,16 +44,11 @@ const MyBuyers = () => {
                                     <td>{buyer.buyerName}</td>
                                     <td>{buyer.buyerEmail}</td>
                                     <td>{buyer.buyerPhoneNumber}</td>
-                                    <td>
-                                        {
-                                            buyer.paid ? <span className='text-green-500 font-semibold'>Paid</span>
-                                                : <span className='text-red-500 font-semibold'>Unpaid</span>
-                                        }
-                                    </td>
+                                    <td>{buyer.meetingLocation}</td>
                                     <td>
                                         {
                                             buyer.transactionId ? <span className='text-green-500 font-semibold'>{buyer.transactionId}</span>
-                                                : <span className='text-red-500 font-semibold'>Not yet sold</span>
+                                                : <span className='text-red-500 font-semibold'>Not yet paid</span>
                                         }
                                     </td>
                                 </tr>)

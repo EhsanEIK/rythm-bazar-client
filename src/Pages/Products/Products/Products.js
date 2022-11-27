@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from './BookingModal';
@@ -23,14 +24,11 @@ const Products = () => {
                     <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                         {
                             products.map(product =>
-                                (product.advertised && product.salesStatus !== 'sold') ?
-                                    <Product
-                                        key={product._id}
-                                        product={product}
-                                        setProductDetalis={setProductDetalis}></Product>
-                                    :
-                                    <p className='col-span-3 text-red-600 text-2xl text-center'>
-                                        There is no product available right now!</p>
+                                (product.advertised && product.salesStatus !== 'sold') &&
+                                <Product
+                                    key={product._id}
+                                    product={product}
+                                    setProductDetalis={setProductDetalis}></Product>
                             )
                         }
                     </div>
