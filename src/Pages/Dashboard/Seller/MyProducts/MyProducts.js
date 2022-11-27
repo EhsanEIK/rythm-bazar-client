@@ -8,11 +8,11 @@ const MyProducts = () => {
     const email = user?.email;
 
     const { data: myProducts = [], refetch } = useQuery({
-        queryKey: ['/products/:email', email],
+        queryKey: ['products', email],
         queryFn: async function () {
-            const res = await fetch(`https://rythm-bazar-server.vercel.app/products/?email=${email}`);
+            const res = await fetch(`https://rythm-bazar-server.vercel.app/products?email=${email}&page=${0}&size=${0}`);
             const data = await res.json();
-            return data;
+            return data.products;
         }
     })
 
