@@ -4,7 +4,7 @@ import BookingModal from './BookingModal';
 import Product from './Product';
 
 const Products = () => {
-    const products = useLoaderData().products;
+    const products = useLoaderData();
     const [productDetails, setProductDetalis] = useState('');
 
     const closeBookingModal = () => {

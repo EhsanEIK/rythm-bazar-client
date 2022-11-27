@@ -17,6 +17,7 @@
 * Without verified seller, the product can't sell.
 * Buyer can report any product to the admin.
 * After confirm the product to be advertised, then it will display in the website.
+* Added pagination.
 
 #### Admin Credentials: ####
 adminEmail: \<admin@gmail.com\>
