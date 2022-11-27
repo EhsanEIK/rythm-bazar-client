@@ -20,6 +20,7 @@ import Payment from "../../Pages/Dashboard/Buyer/Payment/Payment";
 import MyProducts from "../../Pages/Dashboard/Seller/MyProducts/MyProducts";
 import ReportedItems from "../../Pages/Dashboard/Admin/ReportedItems/ReportedItems";
 import Blogs from "../../Pages/Blogs/Blogs";
+import MyBuyers from "../../Pages/Dashboard/Seller/MyBuyers/MyBuyers";
 
 const router = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/seller/myProducts',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/seller/myBuyers',
+                element: <SellerRoute><MyBuyers></MyBuyers></SellerRoute>
             },
             {
                 path: '/dashboard/buyer/myOrders',

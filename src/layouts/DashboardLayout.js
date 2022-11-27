@@ -88,7 +88,7 @@ const DashboardLayout = () => {
                                                 <Link to='/dashboard/seller/myProducts'>My Products</Link>
                                             </li>
                                             <li className="rounded-sm">
-                                                <Link to='/myBuyers'>My Buyers</Link>
+                                                <Link to='/dashboard/seller/myBuyers'>My Buyers</Link>
                                             </li>
                                         </>
                                     }
