@@ -31,6 +31,9 @@ const BookingModal = ({ productDetails, closeBookingModal, setProductDetalis }) 
             method: "POST",
             headers: {
                 'content-type': 'application/json',
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+                }
             },
             body: JSON.stringify(order)
         })

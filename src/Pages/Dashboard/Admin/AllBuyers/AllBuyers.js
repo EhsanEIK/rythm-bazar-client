@@ -18,6 +18,9 @@ const AllBuyers = () => {
         const id = buyer._id;
         fetch(`https://rythm-bazar-server.vercel.app/users/buyers/${id}`, {
             method: "DELETE",
+            headers: {
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
         })
             .then(res => res.json())
             .then(data => {

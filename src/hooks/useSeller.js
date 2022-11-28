@@ -4,7 +4,11 @@ const useSeller = email => {
     const [isSeller, setIsSeller] = useState('');
     const [isSellerLoading, setIsSellerLoading] = useState(true);
     useEffect(() => {
-        fetch(`https://rythm-bazar-server.vercel.app/users/checkSeller/${email}`)
+        fetch(`https://rythm-bazar-server.vercel.app/users/checkSeller/${email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setIsSeller(data.isSeller);

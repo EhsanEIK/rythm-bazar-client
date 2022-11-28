@@ -18,6 +18,9 @@ const AllSellers = () => {
         const id = seller._id;
         fetch(`https://rythm-bazar-server.vercel.app/users/sellers/${id}`, {
             method: "PUT",
+            headers: {
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -33,6 +36,9 @@ const AllSellers = () => {
         const id = seller._id;
         fetch(`https://rythm-bazar-server.vercel.app/users/sellers/${id}`, {
             method: "DELETE",
+            headers: {
+                authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+            }
         })
             .then(res => res.json())
             .then(data => {

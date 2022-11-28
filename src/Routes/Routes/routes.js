@@ -38,7 +38,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/products/categories/:id',
-                loader: ({ params }) => fetch(`https://rythm-bazar-server.vercel.app/products/${params.id}`),
+                loader: ({ params }) => fetch(`https://rythm-bazar-server.vercel.app/products/${params.id}`, {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('rythmBazarToken')}`,
+                    }
+                }),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
             },
             {
