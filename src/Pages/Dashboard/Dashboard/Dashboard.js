@@ -12,7 +12,7 @@ const Dashboard = () => {
             <h3 className='text-2xl font-semibold mb-3'>Your Info</h3>
             <p><b className='mr-2'>Name:</b>{userInfo.name}</p>
             <p><b className='mr-3'>Email:</b>{userInfo.email}</p>
-            <p><b className='mr-5'>Role:</b>{userInfo.userRole}</p>
+            <p><b className='mr-5'>Role:</b>{userInfo?.userRole?.toUpperCase()}</p>
         </div>
     );
 };

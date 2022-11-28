@@ -21,16 +21,18 @@ const Menubar = () => {
                 fluid={true}
                 rounded={true}
             >
-                <Navbar.Brand href="https://flowbite.com/">
-                    <img
-                        src={logo}
-                        className="mr-3 h-6 sm:h-9"
-                        alt="rythm bazar logo"
-                    />
-                    <Link to="/" className="self-center whitespace-nowrap text-3xl text-orange-600 font-semibold uppercase border-b-2 border-r-2 border-orange-400 rounded-md pb-1 pr-2 dark:text-white md:mb-0 mb-5">
-                        Rythm Bazar
-                    </Link>
-                </Navbar.Brand>
+                <Link to='/'>
+                    <Navbar.Brand>
+                        <img
+                            src={logo}
+                            className="mr-3 h-6 sm:h-9"
+                            alt="rythm bazar logo"
+                        />
+                        <span className="self-center whitespace-nowrap text-3xl text-orange-600 font-semibold uppercase border-b-2 border-r-2 border-orange-400 rounded-md pb-1 pr-2 dark:text-white md:mb-0 mb-5">
+                            Rythm Bazar
+                        </span>
+                    </Navbar.Brand>
+                </Link>
                 <div className="flex md:order-2">
                     {
                         user ? <>
