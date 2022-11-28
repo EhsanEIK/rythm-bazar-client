@@ -66,7 +66,7 @@ const Item = ({ item, setProductDetalis }) => {
                     {
                         userInfo.verified ?
                             <label onClick={() => setProductDetalis(item)} htmlFor="booking-modal" className='btn bg-teal-700 w-full mt-5'>Book Now</label>
-                            : <span className='text-red-600 text-center'>User is not verified yet</span>
+                            : <span className='text-red-600 text-center'>Seller is not verified yet</span>
                     }
                 </div>
             </div>
