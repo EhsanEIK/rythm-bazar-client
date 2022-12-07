@@ -7,7 +7,7 @@ import useUserInfo from '../../../hooks/useUserInfo';
 const BookingModal = ({ productDetails, closeBookingModal, setProductDetalis }) => {
     const { user } = useContext(AuthContext);
     const [userInfo] = useUserInfo(user?.email);
-    // https://rythm-bazar-server.vercel.app/orders
+
     const { _id, image, email, productName, resalePrice, location, phoneNumber } = productDetails;
 
     const { register, handleSubmit, formState: { errors }, } = useForm();
@@ -27,7 +27,7 @@ const BookingModal = ({ productDetails, closeBookingModal, setProductDetalis }) 
             buyerPhoneNumber: data.phoneNumber,
             meetingLocation: data.mettingLocation,
         }
-        fetch('http://localhost:5000/orders', {
+        fetch('https://rythm-bazar-server.vercel.app/orders', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
